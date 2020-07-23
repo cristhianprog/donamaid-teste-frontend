@@ -1,0 +1,56 @@
+<div class="position-relative">
+  <div>
+    <svg class="logo"></svg>
+  </div>
+  <div fxLayout="row">
+    <div class="">
+      <img src="../../assets/img/collaborator-{{id}}.jpg" alt="" />
+    </div>
+  </div>
+
+ <div *ngIf="infos.endInfo == 'end'" fxLayout="column">
+    <div class="name-collaborator">
+      <label>{{infos.name}}</label>
+    </div>
+    <div class="since-collaborator">
+      <span>Com a Donamaid desde {{infos.created | date: 'yyyy'}}</span>
+    </div>
+    <div class="description-collaborator" fxLayout="row">
+      <div class="infos" fxLayout="column">
+        <span class="span-info"><b>Idade:</b> {{infos.birth_year == undefined ? 'desconhecida': infos.birth_year.substring(0,infos.birth_year.indexOf("B")) > 0 ? infos.birth_year.substring(0,infos.birth_year.indexOf("B")) + ' anos' : 'Desconhecida' }}</span>
+        <span class="span-info"><b>Gênero:</b> {{infos.gender}}</span>
+        <span class="span-info" style="text-transform:lowercase"><b>Altura:</b> {{infos.height}} cm</span>
+        <span class="span-info"><b>Peso:</b> {{infos.mass}} kg</span>
+      </div>
+      <div class="infos-second" fxLayout="column">
+        <span class="span-info"><b>Planeta de Origem:</b> {{infos.homeworld == undefined ? '' : infos.homeworld.name == undefined ? 'n/a' : infos.homeworld.name}}</span>
+        <span class="span-info"><b>Filme Favorito:</b> {{infos.films == undefined ? '' : infos.films.title == undefined ? 'n/a' : infos.films.title }}</span>
+        <span class="span-info"><b>Nave Favorita:</b> {{infos.starships == undefined ? '' : infos.starships.name == undefined ? 'n/a' : infos.starships.name}}</span>
+        <span class="span-info"><b>Veículo Favorito:</b> {{infos.vehicles == undefined ? '' : infos.vehicles.name == undefined ? 'n/a' : infos.vehicles.name}}</span>
+      </div>
+     </div>
+    <div class="div-button">
+      <div (click)="click_button()" class="button-collaborator">
+        <span class="button-text">QUERO CONTRATAR {{infos.name}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-collaborators">
+    <mat-list>
+      <mat-list-item class="hover-list" (click)="nextCollaborator(i+1)" *ngFor="let collab of allCollaborators; let i = index">
+        <img matListAvatar class="img-avatar" src="../../assets/img/collaborator-{{i+1}}.jpg" alt="">
+        <h3 matLine class="text-dark"> {{collab.name}} </h3>
+        <p matLine class="text-dark">
+          <span class="year_list"> {{collab.birth_year == undefined ? 'desconhecida': collab.birth_year.substring(0,collab.birth_year.indexOf("B")) > 0 ? collab.birth_year.substring(0,collab.birth_year.indexOf("B")) + ' anos' : 'Não Informado' }} </span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+</div>
+
+
+
+
+

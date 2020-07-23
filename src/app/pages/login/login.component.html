@@ -1,0 +1,56 @@
+<div class="img-donie">
+  <img src="../../assets/img/donie.svg" alt="" />
+</div>
+
+<form class="kt-form" id="form-login" [formGroup]="loginForm">
+  <div class="img-logo-donamaid">
+    <img src="../../assets/img/donamaid-logo.svg" alt="" />
+  </div>
+  <div class="form-group mt-5 w-75">
+    <mat-form-field class="w-100">
+      <mat-label class="purple">Email</mat-label>
+      <mat-icon class="purple mr-2" matPrefix>person</mat-icon>
+      <input matInput type="email" formControlName="email"/>
+      <mat-error *ngIf="isControlHasError('email','required')">
+        <strong>Campo obrigatório</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('email','email')">
+        <strong>Email inválido</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('email','minlength')">
+        <strong>Mínimo 3 caracteres</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('email','maxlength')">
+        <strong>Máximo 200 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group w-75">
+    <mat-form-field class="w-100">
+      <mat-label class="purple">Senha</mat-label>
+      <mat-icon class="purple mr-2" matPrefix>lock</mat-icon>
+      <input matInput type="password" formControlName="password"/>
+      <mat-error *ngIf="isControlHasError('password','required')">
+        <strong>Campo obrigatório</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('password','minlength')">
+        <strong>Mínimo 3 caracteres</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('password','maxlength')">
+        <strong>Máximo 20 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="login-actions">
+    <div (click)="submit()" class="buttom-send">
+      <span class="button-text">Entrar</span>
+    </div>
+    <a href="" class="label-forget purple">Esqueci minha senha</a>
+  </div>
+
+</form>
+
+<div class="access">
+  <p>Ainda não tem cadastro? Faça <a href="" class="purple">aqui</a></p>
+</div>
