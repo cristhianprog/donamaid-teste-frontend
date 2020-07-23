@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       email: [null, Validators.compose([
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(200) // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
+        Validators.maxLength(200)
       ])
       ],
       password: [null, Validators.compose([
