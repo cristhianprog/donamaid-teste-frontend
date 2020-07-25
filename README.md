@@ -37,7 +37,7 @@ Foco no UI: ao clicar em outro profissional devo ver a tela com as informações
 Esse repositório deve ser forkado para desenvolvimento do teste pelo candidato e ao final deve ser hospedado no Netlify.
 
 **Endereço para o front no Netlify:**
-    (https://teste-cristhian-donamaid.netlify.app/colaborador/1)
+    (teste-cristhian-donamaid.netlify.app)
 
 # Telas do layout:
 
