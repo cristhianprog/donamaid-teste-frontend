@@ -1,0 +1,57 @@
+<div class="container-background">
+  <div class="logo col-sm-12">
+    <img src="../../../assets/img/donamaid-logo-branco.svg" alt="" />
+  </div>
+  <div class="elemnts-position d-flex flex-row" *ngIf="infos.endInfo == 'end'">
+
+    <div class="img-div col-sm-5">
+      <img class="img-collaborator col-12" src="../../assets/img/collaborator-{{id}}.jpg" alt="" />
+    </div>
+    <div class="apresentation d-flex flex-column col-sm-7">
+      <label class="name-collaborator">{{infos.name}}</label>
+      <span class="since-collaborator">Com a Donamaid desde {{infos.created | date: 'yyyy'}}</span>
+    </div>
+
+  </div>
+
+  <div class="description-collaborator justify-content-center" *ngIf="infos.endInfo == 'end'">
+    <div class="d-flex flex-row col-sm-5 justify-content-center">
+      <div class="infos-5 col-sm-5 d-flex flex-column" >
+        <span class=""><b>Idade:</b> {{infos.birth_year == undefined ? 'desconhecida': infos.birth_year.substring(0,infos.birth_year.indexOf("B")) > 0 ? infos.birth_year.substring(0,infos.birth_year.indexOf("B")) + ' anos' : 'Desconhecida' }}</span>
+        <span class="infos-span"><b>Gênero:</b> {{infos.gender}}</span>
+        <span class="infos-span" style="text-transform:lowercase"><b>Altura:</b> {{infos.height}} cm</span>
+        <span class="infos-span"><b>Peso:</b> {{infos.mass}} kg</span>
+      </div>
+      <div class="infos-7 col-sm-7 d-flex flex-column">
+        <span class=""><b>Planeta de Origem:</b> {{infos.homeworld == undefined ? '' : infos.homeworld.name == undefined ? 'n/a' : infos.homeworld.name}}</span>
+        <span class="infos-span"><b>Filme Favorito:</b> {{infos.films == undefined ? '' : infos.films.title == undefined ? 'n/a' : infos.films.title }}</span>
+        <span class="infos-span"><b>Nave Favorita:</b> {{infos.starships == undefined ? '' : infos.starships.name == undefined ? 'n/a' : infos.starships.name}}</span>
+        <span class="infos-span"><b>Veículo Favorito:</b> {{infos.vehicles == undefined ? '' : infos.vehicles.name == undefined ? 'n/a' : infos.vehicles.name}}</span>
+      </div>
+    </div>
+    <div class="list-collaborators col-sm-7 col-xs-12">
+      <h2 class="mt-3">Outros colaboradores:</h2>
+      <mat-list>
+        <mat-list-item class="hover-list" (click)="nextCollaborator(i+1)" *ngFor="let collab of allCollaborators; let i = index">
+          <img matListAvatar class="img-avatar" src="../../assets/img/collaborator-{{i+1}}.jpg" alt="">
+          <h3 matLine class="text-dark"> {{collab.name}} </h3>
+          <p matLine class="text-dark">
+            <span class="year_list"> {{collab.birth_year == undefined ? 'desconhecida': collab.birth_year.substring(0,collab.birth_year.indexOf("B")) > 0 ? collab.birth_year.substring(0,collab.birth_year.indexOf("B")) + ' anos' : 'Não Informado' }} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row justify-content-center" *ngIf="infos.endInfo == 'end'">
+    <div (click)="click_button()" class="button-collaborator">
+      <span class="button-text">QUERO CONTRATAR {{infos.name}}</span>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+

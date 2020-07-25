@@ -5,13 +5,13 @@ import { CollaboratorService } from 'src/app/_services/collaborator.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-collaborators',
-  templateUrl: './collaborators.component.html',
-  styleUrls: ['./collaborators.component.scss']
+  selector: 'app-collaborator',
+  templateUrl: './collaborator.component.html',
+  styleUrls: ['./collaborator.component.scss']
 })
 
-export class CollaboratorsComponent implements OnInit {
-  public id: String;
+export class CollaboratorComponent implements OnInit {
+  public id: String =  '0';
   public infos: any = {};
   public birth_year: string;
   public allCollaborators: any = [];
@@ -21,15 +21,18 @@ export class CollaboratorsComponent implements OnInit {
               public dialog: MatDialog,
               private route: ActivatedRoute,) {
 
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.id == null ? this.id='1': this.id;
+    let id_url = this.route.snapshot.paramMap.get('id');
     console.log("CollaboratorComponent -> this.id", this.id)
 
-    this.serviceCollaborator.getCollaborator(`people/${this.id}/`);
+    this.serviceCollaborator.getCollaborator(`people/${id_url}/`);
     this.serviceCollaborator.returnCollaborator().subscribe(resp =>{
       this.infos = resp;
       console.log("CollaboratorComponent -> resp", this.infos)
       this.birth_year = this.infos.birth_year == undefined ? '': this.infos.birth_year.substring(0,this.infos.birth_year.indexOf("B"))
+      setTimeout(() => {
+        this.id = id_url;
+        this.id == null ? this.id='1': this.id;
+      }, 2000);
 
     });
 
@@ -61,6 +64,7 @@ export class CollaboratorsComponent implements OnInit {
   }
 
   nextCollaborator(id){
+    let oldId = id;
     console.log('clicou next! ---- ', id);
     this.router.navigate([`/login`]).then(()=>{
       this.router.navigate([`/colaborador/${id}/`]);
